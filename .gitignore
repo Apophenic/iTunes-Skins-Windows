@@ -45,9 +45,10 @@ Temporary Items
 *.cache
 *.user
 *.config
+*.suo
 iTunesSkinTools/bin
 iTunesSkinTools/obj
 iTunes.dll
-iTunesSkinTools.v12.suo
 iTunes_Resources.txt
 iTunesSkinTools/run.bat
+*.suo

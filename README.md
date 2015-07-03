@@ -1,6 +1,6 @@
 # iTunes Skin Tools
 --------------
-![Sample Img](https://github.com/Apophenic/OBD_Simulator/iTunesSkinTools/res/sample/sample.jpg)
+![Sample Img](https://github.com/Apophenic/iTunes-Skin-Tools/blob/master/res/sample/sample.jpg)
 iTunes Skin Tools makes creating skins / themes for iTunes in Windows far more seamless and accessible by automating
 the process of injecting modified resource files into iTunes.dll.
 

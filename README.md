@@ -49,7 +49,7 @@ I'll update this list as I discover how other files are used.
 ---------------------------
 iTunes Skin Tools currently supports extracting all image resource files from iTunes.dll as well as injecting resources
 back into the .dll file. Extracted files are named after their corresponding resource ID (i.e. _5000_ will be
-extracted as _5000.png_)In a typical use case, you'll extract all resources, edit IDs of your choosing, then inject
+extracted as _5000.png_). In a typical use case, you'll extract all resources, edit IDs of your choosing, then inject
 the modified files back into iTunes.dll.
 
 ### How To Use It

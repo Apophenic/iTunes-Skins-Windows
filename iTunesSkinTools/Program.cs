@@ -36,36 +36,84 @@ namespace iTunesSkinTools
 {
     class Program
     {
+        /// <summary>
+        /// Defines what operation should be performed based on cmd args
+        /// </summary>
+        public enum Operation
+        {
+            Extract, Inject
+        }
+
         // Represents generic RT_RCDATA type in resources assembly //
         private static ResourceId RT_RCDATA = new ResourceId(10);
 
+        // Flag to parse .dll with an English charset //
         private static UInt16 LANG_ENGLISH = (UInt16) 1033;
+
+        // [global] vars //
+        private static Operation op;
+        private static string dll;
+        private static string workingDir;
+        private static bool isCreateBackup;
 
         static void Main(string[] args)
         {
-            Console.Write("iTunes Directory: ");
-            string dll = Console.ReadLine() + "\\iTunes.Resources\\iTunes.dll";
-            Console.Write("Directory w/ iTunes Resources: ");
-            string resourceDir = Console.ReadLine();
-            Console.Write("Create Backup(y/n)?: ");
+            readCmdArgs(args);
 
-            bool createBackup = (Console.ReadLine() == "n") ? false : true;
-
-            if(createBackup)
+            switch(op)
             {
-                File.Copy(dll, dll + ".bak", false);    // Don't overwrite
+                case (Operation.Extract):
+                    Console.WriteLine("Beginning Extraction Operation...");
+                    extractResources();
+                    break;
+                case (Operation.Inject):
+                    Console.WriteLine("Beginning Injection Operation...");
+                    injectResources();
+                    break;
+                default:
+                    Console.WriteLine("Unsupported Operation");
+                    break;
             }
 
-            DirectoryInfo d = new DirectoryInfo(resourceDir);
+            Console.WriteLine("Operation finished. Press any key to exit");
+            Console.ReadKey();
+        }
 
-            foreach(var file in d.GetFiles())
+        public static void extractResources()
+        {
+            var resInfo = new ResourceInfo();
+            resInfo.Load(dll);
+
+            var resources = resInfo.Resources[RT_RCDATA];
+            foreach(var resource in resources)
+            {
+                try
+                {
+                    byte[] data = resource.WriteAndGetBytes();
+                    File.WriteAllBytes(workingDir + "\\" + resource.Name + ".png", data);
+                    Console.WriteLine("Successfully extracted: " + resource.Name);
+                }
+                catch
+                {
+                    Console.WriteLine("Failed to extract: " + resource.Name);
+                }
+            }
+        }
+
+        public static void injectResources()
+        {
+            if(isCreateBackup) 
+                File.Copy(dll, dll + ".bak", false);    // Don't overwrite
+
+            DirectoryInfo d = new DirectoryInfo(workingDir);
+            foreach (var file in d.GetFiles())
             {
                 try
                 {
                     // The resource ID MUST be parsed as a uint to replace the current resource, otherwise
                     // it will be added as a new resource which will be ignored by iTunes.
                     var res = new GenericResource
-                    (RT_RCDATA, new ResourceId(uint.Parse(Path.GetFileNameWithoutExtension(file.Name))), LANG_ENGLISH);
+                        (RT_RCDATA, new ResourceId(uint.Parse(Path.GetFileNameWithoutExtension(file.Name))), LANG_ENGLISH);
 
                     res.Data = File.ReadAllBytes(file.FullName);
                     res.SaveTo(dll);
@@ -77,10 +125,38 @@ namespace iTunesSkinTools
                     Console.WriteLine("Injection Failed: " + file.Name);
                 }
             }
-
-            Console.WriteLine("Finished injecting resource files. Press any key to exit.");
-            Console.ReadKey();
         }
-    }
 
+        public static void readCmdArgs(string[] args)
+        {
+            foreach (var arg in args)
+            {
+                var temp = arg.Split('=');
+                string flag = temp[0]; string value = temp[1];
+                switch (flag)
+                {
+                    case ("-op"):
+                        if (value == "extract")
+                            op = Operation.Extract;
+                        else if (value == "inject")
+                            op = Operation.Inject;
+                        break;
+
+                    case ("-itunesdir"):
+                        dll = value.Replace("\"", "") + "\\iTunes.Resources\\iTunes.dll";
+                        break;
+                    case ("-workingdir"):
+                        workingDir = value.Replace("\"", "");
+                        break;
+                    case ("-createbackup"):
+                        isCreateBackup = Boolean.Parse(value);
+                        break;
+                    default:
+                        Console.WriteLine("Unsupported flag: " + flag);
+                        break;
+                }
+            }
+        }
+
+    }
 }

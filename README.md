@@ -1,8 +1,8 @@
 # iTunes Skin Tools
 --------------
-![Sample Img](https://github.com/Apophenic/iTunes-Skin-Tools/blob/master/res/sample/sample.jpg)
+![Sample Img](https://github.com/Apophenic/iTunes-SkinTools/blob/master/iTunesSkinTools/res/sample/sample.jpg)
 iTunes Skin Tools makes creating skins / themes for iTunes in Windows far more seamless and accessible by automating
-the process of injecting modified resource files into iTunes.dll.
+the process of injecting and extracting resource files into iTunes.dll.
 
 ### How It Came To Be
 ---------------------
@@ -16,8 +16,8 @@ If you answered yes to both questions, read on.
 iTunes\iTunes.Resources\iTunes.dll is a custom assembly file created by Apple for use in iTunes. It's a resource-only
  .dll file, meaning it contains primarily resources such as images as opposed to actual code. We're interested in the
  RCData, which is a collection of raw _.png_ files that are used for iTunes' user interface. Each file has a unique
- unsigned integer ID. You can view the dll structure and extract files using [Resource Hacker](http://www.angusj.com/resourcehacker/#download)
- or with Visual Studio. (dotPeek can't parse it)
+ unsigned integer ID. You can view the dll structure (and manipulate it) using [Resource Hacker](http://www.angusj.com/resourcehacker/#download)
+ or with Visual Studio (dotPeek can't parse it).
 
 ### iTunes.dll RCData IDs
 -------------------------
@@ -47,34 +47,30 @@ I'll update this list as I discover how other files are used.
 
 ### What iTunes Skin Tools Does
 ---------------------------
-Currently, iTunes Skin Tools only injects resource files into iTunes.dll. You'll need to manually extract whatever
-files you wish to edit, then inject them using this tool. It's recommended to use [Resource Hacker](http://www.angusj.com/resourcehacker/#download)
-for manual extraction. Simply open iTunes.dll, open the RCData folder, right-click 'save resource as _*.bin_', and
-rename the saved file to *.png.
+iTunes Skin Tools currently supports extracting all image resource files from iTunes.dll as well as injecting resources
+back into the .dll file. Extracted files are named after their corresponding resource ID (i.e. _5000_ will be
+extracted as _5000.png_)In a typical use case, you'll extract all resources, edit IDs of your choosing, then inject
+the modified files back into iTunes.dll.
 
 ### How To Use It
 -----------------
-After running the compiled .exe directly, you'll be prompted for your iTunes directory, the directory containing
-files to inject, and if you wish to create a backup of your iTunes.dll file. Notes:
-* Your iTunes directory is simply iTunes.exe's parent directory
-* The files to inject __must__ be named after their corresponding resource ID. If you were replacing ID 5000, the
-replacement file must be named '_5000.png_'. Other image types _may_ be supported.
-* A backup is created by default, but does not overwrite. It's located at _\iTunes\iTunes.Resources\iTunes.dll.bak_
+```iTunesSkinTools.exe -op=extract||inject -itunesdir="C:\Program Files\iTunes" -workingdir="C:\Directory"```
+* _op_: __Extract__ will extract all files from iTunes.dll into _workingdir_, while __Inject__ will inject all
+files from _workingdir_ into iTunes.dll.
+* _itunesdir_: iTune.exe's parent directory
 
-__Currently this is only tested on iTunes 12.1.2.27 x64. This will almost certainly not work for x32 versions of
-iTunes.__
-
-The good news is that, going forward, this should remain a pretty permanent solution (unless Apple completely
-overhauls their resources, which hasn't been done since at least iTunes 10').
+__Currently this is only tested on the latest version of iTunes x64 (12.1.2.27). This will almost certainly not work
+for x32 versions of iTunes (for now).__
 
 ### Project Status
 ------------------
 Currently supports:
 * iTunes resource injection for custom skins and themes
+* iTunes resource extraction
 
 Planned:
-* Application to rip resources by ID from iTunes.dll
 * An exhaustive guide (w/ images) for resource IDs and the component they effect
 * Support for changing text color (unfortunately, this may be impossible)
 * Support for previous (and future) versions of iTunes
 * Support for x32 iTunes, if necessary
+* Support for other files containing resources, such as iTunes.exe (icons)

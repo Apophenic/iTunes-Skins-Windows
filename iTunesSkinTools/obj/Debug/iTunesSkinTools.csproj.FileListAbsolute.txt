@@ -1,0 +1,7 @@
+C:\Users\Justin\Code Projects\iTunesSkinTools\iTunesSkinTools\bin\Debug\iTunesSkinTools.exe.config
+C:\Users\Justin\Code Projects\iTunesSkinTools\iTunesSkinTools\bin\Debug\iTunesSkinTools.exe
+C:\Users\Justin\Code Projects\iTunesSkinTools\iTunesSkinTools\bin\Debug\iTunesSkinTools.pdb
+C:\Users\Justin\Code Projects\iTunesSkinTools\iTunesSkinTools\bin\Debug\Vestris.ResourceLib.dll
+C:\Users\Justin\Code Projects\iTunesSkinTools\iTunesSkinTools\obj\Debug\iTunesSkinTools.csprojResolveAssemblyReference.cache
+C:\Users\Justin\Code Projects\iTunesSkinTools\iTunesSkinTools\obj\Debug\iTunesSkinTools.exe
+C:\Users\Justin\Code Projects\iTunesSkinTools\iTunesSkinTools\obj\Debug\iTunesSkinTools.pdb

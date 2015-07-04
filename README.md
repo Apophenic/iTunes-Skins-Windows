@@ -22,28 +22,37 @@ iTunes\iTunes.Resources\iTunes.dll is a custom assembly file created by Apple fo
 ### iTunes.dll RCData IDs
 -------------------------
 These are the IDs and how they are used in the UI:
-* 150 / 168 - Now Playing background
+* 1 - iTunes Logo, only displayed when creating an Apple ID
 * 151 - Apple logo in Now Playing box
-* 160 / 163 / 2109 - Volume slider color, other is likely for now playing time slider
+* 160 - Now playing time slider
 * 161 - Most likely tick mark for now playing time slider
-* 304, 305 - Song Column Header
-* 317, 319 - Top Control bar skip buttons
+* 168 - Now Playing background
+* 304 - Song Column header
+* 317/19 - Top Control bar skip buttons
 * 321 - Top Control Play/Pause/Stop buttons
-* 350 - Add to playlist header (?)
-* 732-735 - One of these is edit/Add to button in playlists
-* 736, 741-743 / Get info button colors
-* 803 / 804 - Menu bar (below now playing bar)
-* 816 / 817 - Menu bar button + text colors
-* 3506/13/14/26/33/34/66/73/74 - Scroll bar backgrounds
+* 350 - Volume Slider
+* 491 - Search boxes background
+* 732 - Edit + Add to button in Playlists
+* 736 - Ok, Cancel, Add artwork buttons in Get Info
+* 741 - Details tab in Get Info
+* 742 - Artwork, Lyrics, Options, Sorting tab in Get Info
+* 743 - File tab in Get Info
+* 803 - Menu bar (below now playing bar)
+* 816 - Menu buttons (Music, Playlists, etc.) background
+* 3526 - All scroll bar backgrounds
 * 3525 - Scroll bar foreground
 * 5000 - Top control bar
 * 5001 - Bottom Info Bar
-* 5002 - ?
-* 8100 / 01 - Mini play skin
-* 8102 / 03 - Mini player background (?)
+* 8102 - Mini player Top banner (Now Playing) background
+* 8103 - Mini player Bottom banner (Play, volume) background
+* 8122 - Mini Player cancel button
+* 8201 - Music/TV/Genius/etc. + Songs/Albums/etc. Sub-menus
+* 8316 - Mini Player clear button ?
 * 8441 - Playlist creation background (bottom left)
+* 9000/01 - About iTunes Dialog box
+* 13120 - Window close button
 
-I'll update this list as I discover how other files are used.
+WIP. Note that resources are grouped [somewhat] logically (so expect, for example, most Mini-player assets to be grouped around ID 8000).
 
 ### What iTunes Skin Tools Does
 ---------------------------
@@ -57,7 +66,7 @@ the modified files back into iTunes.dll.
 ```iTunesSkinTools.exe -op=extract||inject -itunesdir="C:\Program Files\iTunes" -workingdir="C:\Directory"```
 * _op_: __Extract__ will extract all files from iTunes.dll into _workingdir_, while __Inject__ will inject all
 files from _workingdir_ into iTunes.dll.
-* _itunesdir_: iTune.exe's parent directory
+* _itunesdir_: iTunes.exe's parent directory
 
 __Currently this is only tested on the latest version of iTunes x64 (12.1.2.27). This will almost certainly not work
 for x32 versions of iTunes (for now).__

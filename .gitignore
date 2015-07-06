@@ -45,6 +45,8 @@ Temporary Items
 *.cache
 *.user
 *.suo
+*.iml
+.idea
 run.bat
 iTunes.dll
 iTunes_Resources.txt

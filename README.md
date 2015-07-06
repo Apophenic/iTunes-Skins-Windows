@@ -1,4 +1,4 @@
-# iTunes Skin Tools
+# iTunes Skin Tools for Windows
 --------------
 ![Sample Img](https://github.com/Apophenic/iTunes-Skin-Tools/blob/master/iTunesSkinTools/res/sample/sample.jpg)
 iTunes Skin Tools makes creating skins / themes for iTunes in Windows far more seamless and accessible by automating
@@ -13,6 +13,8 @@ If you answered yes to both questions, read on.
 
 ### About iTunes.dll
 ----------------
+_Note: As of iTunes 12.2, "iTunes.dll" is now "iTunesResources.dll"_
+
 iTunes\iTunes.Resources\iTunes.dll is a custom assembly file created by Apple for use in iTunes. It's a resource-only
  .dll file, meaning it contains primarily resources such as images as opposed to actual code. We're interested in the
  RCData, which is a collection of raw _.png_ files that are used for iTunes' user interface. Each file has a unique
@@ -21,38 +23,9 @@ iTunes\iTunes.Resources\iTunes.dll is a custom assembly file created by Apple fo
 
 ### iTunes.dll RCData IDs
 -------------------------
-These are the IDs and how they are used in the UI:
-* 1 - iTunes Logo, only displayed when creating an Apple ID
-* 151 - Apple logo in Now Playing box
-* 160 - Now playing time slider
-* 161 - Most likely tick mark for now playing time slider
-* 168 - Now Playing background
-* 304 - Song Column header
-* 317/19 - Top Control bar skip buttons
-* 321 - Top Control Play/Pause/Stop buttons
-* 350 - Volume Slider
-* 491 - Search boxes background
-* 732 - Edit + Add to button in Playlists
-* 736 - Ok, Cancel, Add artwork buttons in Get Info
-* 741 - Details tab in Get Info
-* 742 - Artwork, Lyrics, Options, Sorting tab in Get Info
-* 743 - File tab in Get Info
-* 803 - Menu bar (below now playing bar)
-* 816 - Menu buttons (Music, Playlists, etc.) background
-* 3526 - All scroll bar backgrounds
-* 3525 - Scroll bar foreground
-* 5000 - Top control bar
-* 5001 - Bottom Info Bar
-* 8102 - Mini player Top banner (Now Playing) background
-* 8103 - Mini player Bottom banner (Play, volume) background
-* 8122 - Mini Player cancel button
-* 8201 - Music/TV/Genius/etc. + Songs/Albums/etc. Sub-menus
-* 8316 - Mini Player clear button ?
-* 8441 - Playlist creation background (bottom left)
-* 9000/01 - About iTunes Dialog box
-* 13120 - Window close button
+See /Resource IDs/ResourceIDs.html for a [comprehensive] guide of how each resource ID effects the UI.
 
-WIP. Note that resources are grouped [somewhat] logically (so expect, for example, most Mini-player assets to be grouped around ID 8000).
+Note: For older versions of iTunes, most resource IDs remain unchanged, however some don't exist.
 
 ### What iTunes Skin Tools Does
 ---------------------------
@@ -70,18 +43,20 @@ files from _workingdir_ into iTunes.dll.
 
 ### Compatability
 -----------------
-* Support for latest iTunes (12.2.0.145) x64
-* 12.1.27 x64
+* Support for latest iTunes (12.2.0.145)
+* iTunes Versions 11.1.5 and greater
+* x32 and x64 versions of iTunes
 
 ### Project Status
 ------------------
 Currently supports:
 * iTunes resource injection for custom skins and themes
 * iTunes resource extraction
+* An exhaustive guide (w/ images) for resource IDs and the component they effect
 
 Planned:
-* An exhaustive guide (w/ images) for resource IDs and the component they effect
-* Support for changing text color (unfortunately, this may be impossible)
-* Support for previous (and future) versions of iTunes
-* Support for x32 iTunes, if necessary
+* Mac Support
+* Support for changing text color (this may be impossible)
 * Support for other files containing resources, such as iTunes.exe (icons)
+* Support for older versions (?)
+* Add restore backup feature

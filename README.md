@@ -68,8 +68,10 @@ the modified files back into iTunes.dll.
 files from _workingdir_ into iTunes.dll.
 * _itunesdir_: iTunes.exe's parent directory
 
-__Currently this is only tested on the latest version of iTunes x64 (12.1.2.27). This will almost certainly not work
-for x32 versions of iTunes (for now).__
+### Compatability
+-----------------
+* Support for latest iTunes (12.2.0.145) x64
+* 12.1.27 x64
 
 ### Project Status
 ------------------

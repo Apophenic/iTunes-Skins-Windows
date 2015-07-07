@@ -15,7 +15,7 @@ If you answered yes to both questions, read on.
 ----------------
 _Note: As of iTunes 12.2, "iTunes.dll" is now "iTunesResources.dll"_
 
-iTunes\iTunes.Resources\iTunes.dll is a custom assembly file created by Apple for use in iTunes. It's a resource-only
+```iTunes\iTunes.Resources\iTunes.dll``` is a custom assembly file created by Apple for use in iTunes. It's a resource-only
  .dll file, meaning it contains primarily resources such as images as opposed to actual code. We're interested in the
  RCData, which is a collection of raw _.png_ files that are used for iTunes' user interface. Each file has a unique
  unsigned integer ID. You can view the dll structure (and manipulate it) using [Resource Hacker](http://www.angusj.com/resourcehacker/#download)
@@ -23,7 +23,7 @@ iTunes\iTunes.Resources\iTunes.dll is a custom assembly file created by Apple fo
 
 ### iTunes.dll RCData IDs
 -------------------------
-See /Resource IDs/ResourceIDs.html for a [comprehensive] guide of how each resource ID effects the UI.
+[Click here](http://htmlpreview.github.io/?https://github.com/Apophenic/iTunes-Skin-Tools/blob/master/Resource%20IDs/ResourceIDs.html) for a [comprehensive] guide of how resource IDs effects the UI.
 
 Note: For older versions of iTunes, most resource IDs remain unchanged, however some don't exist.
 
@@ -36,10 +36,13 @@ the modified files back into iTunes.dll.
 
 ### How To Use It
 -----------------
-```iTunesSkinTools.exe -op=extract||inject -itunesdir="C:\Program Files\iTunes" -workingdir="C:\Directory"```
+~~~~~~~~ shell
+iTunesSkinTools.exe -op=extract||inject -itunesdir="C:\Program Files\iTunes" -workingdir="C:\Directory" -createbackup=true
+~~~~~~~~
 * _op_: __Extract__ will extract all files from iTunes.dll into _workingdir_, while __Inject__ will inject all
 files from _workingdir_ into iTunes.dll.
 * _itunesdir_: iTunes.exe's parent directory
+* _createbackup_: Optional, will create a backup of iTunes.dll if one doesn't already exist. Default behavior is ```true```.
 
 ### Compatability
 -----------------
@@ -49,7 +52,7 @@ files from _workingdir_ into iTunes.dll.
 
 ### Project Status
 ------------------
-Currently supports:
+Current Features:
 * iTunes resource injection for custom skins and themes
 * iTunes resource extraction
 * An exhaustive guide (w/ images) for resource IDs and the component they effect

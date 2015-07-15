@@ -36,13 +36,18 @@ the modified files back into iTunes.dll.
 
 ### How To Use It
 -----------------
-~~~~~~~~ shell
-iTunesSkinTools.exe -op=extract||inject -itunesdir="C:\Program Files\iTunes" -workingdir="C:\Directory" -createbackup=true
-~~~~~~~~
+~~~ shell
+iTunesSkinTools.exe -op=extract|inject -itunesdir="C:\Program Files\iTunes" -workingdir="C:\Directory" -createbackup=true
+~~~
 * _op_: __Extract__ will extract all files from iTunes.dll into _workingdir_, while __Inject__ will inject all
 files from _workingdir_ into iTunes.dll.
 * _itunesdir_: iTunes.exe's parent directory
 * _createbackup_: Optional, will create a backup of iTunes.dll if one doesn't already exist. Default behavior is ```true```.
+
+You may also restore an iTunesResources.dll backup by doing the following:
+~~~ shell
+iTunesSkinTools.exe -op=restore -itunesdir="C:\Program Files\iTunes"
+~~~
 
 ### Compatability
 -----------------
@@ -55,11 +60,7 @@ files from _workingdir_ into iTunes.dll.
 Current Features:
 * iTunes resource injection for custom skins and themes
 * iTunes resource extraction
+* Restore backups
 * An exhaustive guide (w/ images) for resource IDs and the component they effect
 
-Planned:
-* Mac Support
-* Support for changing text color (this may be impossible)
-* Support for other files containing resources, such as iTunes.exe (icons)
-* Support for older versions (?)
-* Add restore backup feature
+__Mac support is coming soon__

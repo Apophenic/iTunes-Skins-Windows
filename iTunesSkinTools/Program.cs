@@ -1,6 +1,6 @@
 ﻿//
 //   iTunes skin creation tool : 
-//   Inject modified resource files into iTunes\iTunes.Resources\iTunes.dll
+//   Inject modified resource files into iTunes\iTunes.Resources\iTunesResources.dll
 //
 //   https://github.com/Apophenic
 //   
@@ -41,7 +41,7 @@ namespace iTunesSkinTools
         /// </summary>
         public enum Operation
         {
-            Extract, Inject
+            Extract, Inject, RestoreBackup
         }
 
         // Represents generic RT_RCDATA type in resources assembly //
@@ -69,6 +69,10 @@ namespace iTunesSkinTools
                 case (Operation.Inject):
                     Console.WriteLine("Beginning Injection Operation...");
                     injectResources();
+                    break;
+                case (Operation.RestoreBackup):
+                    Console.WriteLine("Restoring dll backup...");
+                    restoreBackup();
                     break;
                 default:
                     Console.WriteLine("Unsupported Operation");
@@ -127,6 +131,20 @@ namespace iTunesSkinTools
             }
         }
 
+        public static void restoreBackup()
+        {
+            if (!File.Exists(dll + ".bak"))
+            {
+                Console.WriteLine("Backup file not found");
+                return;
+            }
+            else
+            {
+                File.Delete(dll);
+                File.Move(dll + ".bak", dll);
+            }
+        }
+
         public static void readCmdArgs(string[] args)
         {
             foreach (var arg in args)
@@ -140,11 +158,13 @@ namespace iTunesSkinTools
                             op = Operation.Extract;
                         else if (value == "inject")
                             op = Operation.Inject;
+                        else if (value == "restore")
+                            op = Operation.RestoreBackup;
                         break;
 
                     case ("-itunesdir"):
                         value = value.Replace("\"", "") + "\\iTunes.Resources\\";
-                        dll = value + "iTunesResources.dll";  // iTunes.dll renamed in iTunes 12.1.2
+                        dll = value + "iTunesResources.dll";  // iTunes.dll renamed in iTunes 12.2
                         if (!File.Exists(dll))  // TODO Check for iTunes version
                         {
                             dll = value + "iTunes.dll";

@@ -36,6 +36,7 @@ the modified files back into iTunes.dll.
 
 ### How To Use It
 -----------------
+Pre-compiled binary: [.exe](https://github.com/Apophenic/iTunes-Skins-Windows/tree/master/iTunesSkinTools/exe)
 ~~~ shell
 iTunesSkinTools.exe -op=extract|inject -itunesdir="C:\Program Files\iTunes" -workingdir="C:\Directory" -createbackup=true
 ~~~
@@ -49,7 +50,7 @@ You may also restore an iTunesResources.dll backup by doing the following:
 iTunesSkinTools.exe -op=restore -itunesdir="C:\Program Files\iTunes"
 ~~~
 
-### Compatability
+### Compatibility
 -----------------
 * Support for latest iTunes (12.2.0.145)
 * iTunes Versions 11.1.5 and greater

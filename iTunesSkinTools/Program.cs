@@ -165,7 +165,7 @@ namespace iTunesSkinTools
                     case ("-itunesdir"):
                         value = value.Replace("\"", "") + "\\iTunes.Resources\\";
                         dll = value + "iTunesResources.dll";  // iTunes.dll renamed in iTunes 12.2
-                        if (!File.Exists(dll))  // TODO Check for iTunes version
+                        if (!File.Exists(dll))
                         {
                             dll = value + "iTunes.dll";
                         }

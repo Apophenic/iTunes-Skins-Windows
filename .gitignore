@@ -41,7 +41,6 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-*.exe
 *.cache
 *.user
 *.suo
@@ -58,3 +57,11 @@ iTunesSkinTools/obj
 
 
 restore.bat
+iTunesSkinTools/packages.config
+iTunesSkinTools/FodyWeavers.xml
+iTunesSkinTools/exe/iTunesSkinTools.vshost.exe
+iTunesSkinTools/exe/iTunesSkinTools.pdb
+iTunesSkinTools/exe/iTunesSkinTools.vshost.exe.config
+iTunesSkinTools/exe/Vestris.ResourceLib.dll
+iTunesSkinTools/exe/iTunesSkinTools.exe.config
+packages

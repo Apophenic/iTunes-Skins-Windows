@@ -52,7 +52,7 @@ iTunesSkinTools.exe -op=restore -itunesdir="C:\Program Files\iTunes"
 
 ### Compatibility
 -----------------
-* Support for latest iTunes (12.2.0.145)
+* Support for latest iTunes (12.2.1.16)
 * iTunes Versions 11.1.5 and greater
 * x32 and x64 versions of iTunes
 

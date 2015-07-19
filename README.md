@@ -37,8 +37,11 @@ the modified files back into iTunes.dll.
 ### How To Use It
 -----------------
 Pre-compiled binary: [.exe](https://github.com/Apophenic/iTunes-Skins-Windows/tree/master/iTunesSkinTools/exe)
+Batch scripts are also available [here](https://github.com/Apophenic/iTunes-Skins-Windows/tree/master/scripts)
+
 ~~~ shell
-iTunesSkinTools.exe -op=extract|inject -itunesdir="C:\Program Files\iTunes" -workingdir="C:\Directory" -createbackup=true
+iTunesSkinTools.exe -op=extract|inject -itunesdir="D:\Program Files\iTunes" -workingdir="D:\Directory"
+-createbackup=true
 ~~~
 * _op_: __Extract__ will extract all files from iTunes.dll into _workingdir_, while __Inject__ will inject all
 files from _workingdir_ into iTunes.dll.
@@ -47,7 +50,7 @@ files from _workingdir_ into iTunes.dll.
 
 You may also restore an iTunesResources.dll backup by doing the following:
 ~~~ shell
-iTunesSkinTools.exe -op=restore -itunesdir="C:\Program Files\iTunes"
+iTunesSkinTools.exe -op=restore -itunesdir="D:\Program Files\iTunes"
 ~~~
 
 ### Compatibility

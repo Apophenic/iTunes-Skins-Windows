@@ -46,17 +46,12 @@ Temporary Items
 *.suo
 *.iml
 .idea
-run.bat
-iTunes.dll
 iTunes_Resources.txt
 resources
 resources_mod
 workingdir
-iTunesSkinTools/bin
 iTunesSkinTools/obj
 
-
-restore.bat
 iTunesSkinTools/packages.config
 iTunesSkinTools/FodyWeavers.xml
 iTunesSkinTools/exe/iTunesSkinTools.vshost.exe

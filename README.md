@@ -6,7 +6,7 @@ the process of injecting and extracting resource files into iTunes.dll.
 
 ### How It Came To Be
 ---------------------
-Have your eyes grown weary and fatigued from this incessant trend of acute black text on exceedindly high contrast white
+Have your eyes grown weary and fatigued from this incessant trend of acute black text on exceedingly high contrast white
 backgrounds that perpetuates in all facets of contemporary software design resulting in sterile user interfaces? Was
  that an overly drawn out sentence?
 If you answered yes to both questions, read on.
@@ -19,7 +19,7 @@ _Note: As of iTunes 12.2, "iTunes.dll" is now "iTunesResources.dll"_
  .dll file, meaning it contains primarily resources such as images as opposed to actual code. We're interested in the
  RCData, which is a collection of raw _.png_ files that are used for iTunes' user interface. Each file has a unique
  unsigned integer ID. You can view the dll structure (and manipulate it) using [Resource Hacker](http://www.angusj.com/resourcehacker/#download)
- or with Visual Studio (dotPeek can't parse it).
+ or with Visual Studio.
 
 ### iTunes.dll RCData IDs
 -------------------------
@@ -37,6 +37,7 @@ the modified files back into iTunes.dll.
 ### How To Use It
 -----------------
 Pre-compiled binary: [.exe](https://github.com/Apophenic/iTunes-Skins-Windows/tree/master/iTunesSkinTools/exe)
+
 Batch scripts are also available [here](https://github.com/Apophenic/iTunes-Skins-Windows/tree/master/scripts)
 
 ~~~ shell
@@ -59,12 +60,4 @@ iTunesSkinTools.exe -op=restore -itunesdir="D:\Program Files\iTunes"
 * iTunes Versions 11.1.5 and greater
 * x32 and x64 versions of iTunes
 
-### Project Status
-------------------
-Current Features:
-* iTunes resource injection for custom skins and themes
-* iTunes resource extraction
-* Restore backups
-* An exhaustive guide (w/ images) for resource IDs and the component they effect
-
-__Mac support is coming soon__
+Need Mac support? [__iTunes Skin Tools for Mac__](https://github.com/Apophenic/iTunes-Skins-Mac)

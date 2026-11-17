@@ -19,6 +19,7 @@ _Note: As of iTunes 12.2, "iTunes.dll" is now "iTunesResources.dll"_
  .dll file, meaning it contains primarily resources such as images as opposed to actual code. We're interested in the
  RCData, which is a collection of raw _.png_ files that are used for iTunes' user interface. Each file has a unique
  unsigned integer ID. You can view the dll structure (and manipulate it) using [Resource Hacker](http://www.angusj.com/resourcehacker/#download)
+ // Alternative: Resource Cracker https://www.pelock.com/products/resource-cracker
  or with Visual Studio.
 
 ### iTunes.dll RCData IDs
